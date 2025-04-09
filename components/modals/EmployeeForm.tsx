@@ -70,7 +70,12 @@ const EmployeeForm = ({ type }: { type: "new" | "edit"}) => {
   async function onSubmit(values: z.infer<typeof employeeSchema>) {
       setIsLoading(true);
       try {
-        const result = await addEmployee(values);
+        let result;
+        type === "new" ? 
+        result = await addEmployee(values)
+        : type === "edit" 
+        ? result = {} // edit employee server action
+        : null
         if(result?.error) {
           setIsLoading(false);
           setErrorMessage(result.error);

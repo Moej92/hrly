@@ -41,14 +41,13 @@ const Page = async () => {
 
             {employees.length > 0 ? (
                 <section className="employee-list">
-                    {employees.map(({ id, fullName, startDate, jobTitle, contractType}) => (
+                    {employees.map(({ id, fullName, startDate, jobTitle}) => (
                         <EmployeeCard 
                             key={id} 
                             id={id}
                             fullName={fullName}
                             startDate={startDate}
                             jobTitle={jobTitle}
-                            contractType={contractType}
                         />
                     ))}
                 </section>
@@ -65,11 +64,10 @@ interface EmployeeCardProps {
     fullName: string;
     startDate: Date;
     jobTitle: string;
-    contractType: string;
 }
 
 const EmployeeCard = ({ 
-    id, fullName, startDate, jobTitle, contractType 
+    id, fullName, startDate, jobTitle 
 }: EmployeeCardProps) => {
     return (
         <Link href={`/employee/${id}`} className="employee-card">

@@ -11,8 +11,6 @@ interface Props {
     email: string;
 }
 
-const paths = ["employee"];
-
 const Sidebar = ({ fullName, email }: Props) => {
     const pathname = usePathname();
 

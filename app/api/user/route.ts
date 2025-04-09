@@ -36,8 +36,9 @@ export async function POST(req: Request) {
             }
         })
 
-        const { password: userPassword, ...userData } = newUser; 
-        console.log(newUser)
+        // const { password: userPassword, ...userData } = newUser; 
+        // console.log(newUser)
+        const { ...userData } = newUser; 
 
         // return NextResponse.json({ "success": true });
         return NextResponse.json({ user: userData, message: "User Created Successfully"}, { status: 201 });

@@ -5,13 +5,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { object, string, ZodError } from "zod";
 import { compare } from "bcrypt";
 
-interface CustomUser {
-    id: string;
-    email: string;
-    name?: string;
-    role?: string; // If you plan to add roles
-}
-
 const signInSchema = object({
     email: string({ required_error: "Email is required" })
         .min(1, "Email is required")

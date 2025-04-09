@@ -1,4 +1,3 @@
-import Image from "next/image";
 import EmployeeForm from "@/components/modals/EmployeeForm";
 
 const Page = async ({ params }: { params: Promise<{ type: string }>}) => {
