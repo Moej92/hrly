@@ -44,7 +44,7 @@ const employeeSchema = z.object({
     contractType: z.enum(["Full-Time", "Part-Time", "Freelance", "Intern"]),
 })
 
-const EmployeeForm = ({ type }: { type: "new" | "edit"}) => {
+const NewEmployeeForm = ({ type }: { type: "new" }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -70,12 +70,8 @@ const EmployeeForm = ({ type }: { type: "new" | "edit"}) => {
   async function onSubmit(values: z.infer<typeof employeeSchema>) {
       setIsLoading(true);
       try {
-        let result;
-        type === "new" ? 
+        let result; 
         result = await addEmployee(values)
-        : type === "edit" 
-        ? result = {} // edit employee server action
-        : null
         if(result?.error) {
           setIsLoading(false);
           setErrorMessage(result.error);
@@ -83,7 +79,6 @@ const EmployeeForm = ({ type }: { type: "new" | "edit"}) => {
           setIsLoading(false);
           setSuccessMessage("Successfully Saved");
           setTimeout(() => router.push("/employee"), 2000);
-          
         }
       } catch (error) {
         setIsLoading(false);
@@ -325,4 +320,4 @@ const EmployeeForm = ({ type }: { type: "new" | "edit"}) => {
   );
 }
  
-export default EmployeeForm;
+export default NewEmployeeForm;

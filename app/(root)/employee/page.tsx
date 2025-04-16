@@ -41,7 +41,7 @@ const Page = async () => {
 
             {employees.length > 0 ? (
                 <section className="employee-list">
-                    {employees.map(({ id, fullName, startDate, jobTitle}) => (
+                    {employees.map(({ id, fullName, startDate, jobTitle }) => (
                         <EmployeeCard 
                             key={id} 
                             id={id}
@@ -66,7 +66,7 @@ interface EmployeeCardProps {
     jobTitle: string;
 }
 
-const EmployeeCard = ({ 
+const EmployeeCard = ({
     id, fullName, startDate, jobTitle 
 }: EmployeeCardProps) => {
     return (
@@ -84,11 +84,11 @@ const EmployeeCard = ({
                     <p className="subtitle-2 line-clamp-1">
                         {jobTitle}
                     </p>
-                    <p className="body-1"><span className="font-bold">#{id}</span></p>
+                    <p className="h1 text-light-200">#{id}</p>
                 </div>
             </div>
 
-            <div className="">
+            <div>
                 <p className="body-1">{fullName}</p>
                 <p className="body-2 text-light-100">
                     Joined: {startDate.toDateString()}
