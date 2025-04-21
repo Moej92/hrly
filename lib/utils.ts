@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { format } from "date-fns"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -47,4 +48,31 @@ export function processSalaries(salaries: Salary[]): Salary[] {
 //   { amount: 500, startDate: new Date('2025-04-01T00:00:00.000Z') },
 // ];
 
-// console.log(processSalaries(salaries));
+
+export function getStartOfWeek(date: Date, weekStartDay = 0) {
+  const day = date.getDay()
+  const diff = (day - weekStartDay + 7) % 7
+  const start = new Date(date)
+  start.setDate(date.getDate() - diff)
+  start.setHours(0, 0, 0, 0)
+  return start
+}
+
+export function formatWeekRange(start: Date) {
+  const end = new Date(start)
+  end.setDate(start.getDate() + 6)
+  const sameMonth = start.getMonth() === end.getMonth()
+  const from = format(start, 'd MMM')
+  const to = format(end, sameMonth ? 'd' : 'd MMM')
+  return `${from}–${to}, ${format(end, 'yyyy')}`
+}
+
+console.log(new Date().getDate() - 7)
+
+console.log(
+  formatWeekRange(
+    new Date(
+      getStartOfWeek(new Date())
+    )
+  )
+)

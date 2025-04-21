@@ -6,6 +6,9 @@
     @apply bg-white text-dark-200 min-h-screen
   }
 
+  /* Remove scrollbar */
+
+
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -116,7 +119,6 @@
     @apply hidden items-center justify-between gap-5 p-5 sm:flex lg:py-7 xl:gap-10;
   }
 
-
   .sidebar {
     @apply hidden h-screen w-[90px] flex-col overflow-auto px-5 py-7 sm:flex lg:w-[280px] xl:w-[325px];
   }
@@ -165,7 +167,18 @@
     @apply text-[10px] leading-[14px] font-normal;
   }
 
-  
+    /* Hide scrollbar track background */
+.scrollbar-hide::-webkit-scrollbar {
+  height: 8px;
+}
+.scrollbar-hide::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
   /* HELPER */
   .flex-center {
     @apply flex items-center justify-center;

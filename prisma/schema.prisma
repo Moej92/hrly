@@ -34,6 +34,7 @@ model Employee {
   department    String?
   contractType  String
   salaryRecords SalaryRecord[]
+  dailyShifts   DailyShift[]
 }
 
 model SalaryRecord {
@@ -43,4 +44,18 @@ model SalaryRecord {
   startDate  DateTime
   amount     Float
   createdAt  DateTime @default(now())
+}
+
+model DailyShift {
+  id         Int      @id @default(autoincrement())
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  employeeId Int
+  date       DateTime
+  startTime  DateTime
+  endTime    DateTime
+  isDayOff   Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([employeeId, date])
 }
